@@ -9,38 +9,246 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 
+const VolunteerRoute = VolunteerRouteImport.update({
+  id: '/volunteer',
+  path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GalleryRoute = GalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProjectsRoute,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
+  '/news': typeof NewsRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
+  '/volunteer': typeof VolunteerRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
+  '/news': typeof NewsRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
+  '/volunteer': typeof VolunteerRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/gallery': typeof GalleryRoute
+  '/impact': typeof ImpactRoute
+  '/news': typeof NewsRouteWithChildren
+  '/projects': typeof ProjectsRouteWithChildren
+  '/volunteer': typeof VolunteerRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/projects/$slug': typeof ProjectsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/donate'
+    | '/gallery'
+    | '/impact'
+    | '/news'
+    | '/projects'
+    | '/volunteer'
+    | '/news/$slug'
+    | '/projects/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/donate'
+    | '/gallery'
+    | '/impact'
+    | '/news'
+    | '/projects'
+    | '/volunteer'
+    | '/news/$slug'
+    | '/projects/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/auth'
+    | '/contact'
+    | '/donate'
+    | '/gallery'
+    | '/impact'
+    | '/news'
+    | '/projects'
+    | '/volunteer'
+    | '/news/$slug'
+    | '/projects/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
+  ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
+  GalleryRoute: typeof GalleryRoute
+  ImpactRoute: typeof ImpactRoute
+  NewsRoute: typeof NewsRouteWithChildren
+  ProjectsRoute: typeof ProjectsRouteWithChildren
+  VolunteerRoute: typeof VolunteerRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/volunteer': {
+      id: '/volunteer'
+      path: '/volunteer'
+      fullPath: '/volunteer'
+      preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
+      preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +256,56 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/$slug': {
+      id: '/projects/$slug'
+      path: '/$slug'
+      fullPath: '/projects/$slug'
+      preLoaderRoute: typeof ProjectsSlugRouteImport
+      parentRoute: typeof ProjectsRoute
+    }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof NewsRoute
+    }
   }
 }
 
+interface NewsRouteChildren {
+  NewsSlugRoute: typeof NewsSlugRoute
+}
+
+const NewsRouteChildren: NewsRouteChildren = {
+  NewsSlugRoute: NewsSlugRoute,
+}
+
+const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
+
+interface ProjectsRouteChildren {
+  ProjectsSlugRoute: typeof ProjectsSlugRoute
+}
+
+const ProjectsRouteChildren: ProjectsRouteChildren = {
+  ProjectsSlugRoute: ProjectsSlugRoute,
+}
+
+const ProjectsRouteWithChildren = ProjectsRoute._addFileChildren(
+  ProjectsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
+  ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
+  GalleryRoute: GalleryRoute,
+  ImpactRoute: ImpactRoute,
+  NewsRoute: NewsRouteWithChildren,
+  ProjectsRoute: ProjectsRouteWithChildren,
+  VolunteerRoute: VolunteerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
