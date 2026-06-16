@@ -3,7 +3,7 @@ export function Footer() {
     <footer className="bg-black border-t border-white/[0.08] px-6 py-12 sm:py-10 text-center">
       <div className="mx-auto flex max-w-[480px] flex-col items-center">
         <img
-          src="/images/mashoorbano-logo.png"
+          src="/mashoorbano-logo.png"
           alt="MashoorBano Digital Agency logo"
           className="mb-[18px] h-[72px] w-[72px] rounded-full sm:h-[60px] sm:w-[60px]"
         />
