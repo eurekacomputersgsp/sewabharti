@@ -1,3 +1,4 @@
+import { Footer } from "@/components/Footer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -80,6 +81,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <Footer />
     </QueryClientProvider>
   );
 }
