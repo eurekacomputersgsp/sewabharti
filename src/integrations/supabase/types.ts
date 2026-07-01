@@ -559,63 +559,7 @@ export type Database = {
       }
     }
     Views: {
-      site_settings_public: {
-        Row: {
-          accent_color: string | null
-          address: string | null
-          bank_details: string | null
-          emails: Json | null
-          footer_quick_links: Json | null
-          id: number | null
-          logo_url: string | null
-          map_embed_url: string | null
-          nav_links: Json | null
-          ngo_name: string | null
-          phones: Json | null
-          primary_color: string | null
-          section_visibility: Json | null
-          social_links: Json | null
-          updated_at: string | null
-          upi_id: string | null
-        }
-        Insert: {
-          accent_color?: string | null
-          address?: string | null
-          bank_details?: string | null
-          emails?: Json | null
-          footer_quick_links?: Json | null
-          id?: number | null
-          logo_url?: string | null
-          map_embed_url?: string | null
-          nav_links?: Json | null
-          ngo_name?: string | null
-          phones?: Json | null
-          primary_color?: string | null
-          section_visibility?: Json | null
-          social_links?: Json | null
-          updated_at?: string | null
-          upi_id?: string | null
-        }
-        Update: {
-          accent_color?: string | null
-          address?: string | null
-          bank_details?: string | null
-          emails?: Json | null
-          footer_quick_links?: Json | null
-          id?: number | null
-          logo_url?: string | null
-          map_embed_url?: string | null
-          nav_links?: Json | null
-          ngo_name?: string | null
-          phones?: Json | null
-          primary_color?: string | null
-          section_visibility?: Json | null
-          social_links?: Json | null
-          updated_at?: string | null
-          upi_id?: string | null
-        }
-        Relationships: []
-      }
+      [_ in never]: never
     }
     Functions: {
       has_role: {
@@ -624,24 +568,6 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
-      }
-      verify_certificate: {
-        Args: {
-          p_name: string
-          p_registration_number: string
-          p_serial_number: string
-          p_son_of: string
-        }
-        Returns: {
-          course_name: string
-          ending_date: string
-          grade: string
-          name: string
-          registration_number: string
-          serial_number: string
-          son_of: string
-          starting_date: string
-        }[]
       }
     }
     Enums: {
