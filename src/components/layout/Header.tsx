@@ -26,7 +26,7 @@ export function Header() {
           </div>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden md:flex items-center gap-0.5 flex-wrap justify-center">
           {navLinks.map((l) => {
             const active = pathname === l.path;
             const tkey = `nav.${l.path === "/" ? "home" : l.path.slice(1)}`;
@@ -34,7 +34,7 @@ export function Header() {
               <Link
                 key={l.path}
                 to={l.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition ${active ? "text-primary bg-primary/10" : "text-foreground/80 hover:text-primary hover:bg-muted"}`}
+                className={`px-2 py-2 rounded-md text-[13px] font-medium transition whitespace-nowrap ${active ? "text-primary bg-primary/10" : "text-foreground/80 hover:text-primary hover:bg-muted"}`}
               >
                 {t(tkey, l.label)}
               </Link>
