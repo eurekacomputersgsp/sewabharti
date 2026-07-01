@@ -11,25 +11,23 @@ function VerifyPage() {
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<null | { ok: boolean; data?: any }>(null);
 
-  const norm = (s: string) => s.trim().toLowerCase();
-
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
     setResult(null);
-    const { data, error } = await supabase
-      .from("certificates")
-      .select("*")
-      .eq("registration_number", form.registration_number.trim())
-      .eq("serial_number", form.serial_number.trim())
-      .maybeSingle();
+    const { data, error } = await supabase.functions.invoke("verify-certificate", {
+      body: {
+        registration_number: form.registration_number,
+        serial_number: form.serial_number,
+        name: form.name,
+        son_of: form.son_of,
+      },
+    });
     setBusy(false);
-    if (error || !data) return setResult({ ok: false });
-    if (norm(data.name) !== norm(form.name) || norm(data.son_of) !== norm(form.son_of)) {
-      return setResult({ ok: false });
-    }
-    setResult({ ok: true, data });
+    if (error || !data?.verified) return setResult({ ok: false });
+    setResult({ ok: true, data: data.certificate });
   };
+
 
   return (
     <PublicLayout>
