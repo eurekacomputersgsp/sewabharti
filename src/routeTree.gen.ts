@@ -10,6 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VolunteerRouteImport } from './routes/volunteer'
+import { Route as VerifyRouteImport } from './routes/verify'
+import { Route as ResultsRouteImport } from './routes/results'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as ImpactRouteImport } from './routes/impact'
@@ -29,16 +31,28 @@ import { Route as AdminTestimonialsRouteImport } from './routes/admin.testimonia
 import { Route as AdminTeamRouteImport } from './routes/admin.team'
 import { Route as AdminSubscribersRouteImport } from './routes/admin.subscribers'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminResultsRouteImport } from './routes/admin.results'
 import { Route as AdminProjectsRouteImport } from './routes/admin.projects'
 import { Route as AdminNewsRouteImport } from './routes/admin.news'
 import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
 import { Route as AdminGalleryRouteImport } from './routes/admin.gallery'
 import { Route as AdminDonationsRouteImport } from './routes/admin.donations'
 import { Route as AdminContentRouteImport } from './routes/admin.content'
+import { Route as AdminCertificatesRouteImport } from './routes/admin.certificates'
 
 const VolunteerRoute = VolunteerRouteImport.update({
   id: '/volunteer',
   path: '/volunteer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyRoute = VerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResultsRoute = ResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -136,6 +150,11 @@ const AdminSettingsRoute = AdminSettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminResultsRoute = AdminResultsRouteImport.update({
+  id: '/results',
+  path: '/results',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminProjectsRoute = AdminProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -166,6 +185,11 @@ const AdminContentRoute = AdminContentRouteImport.update({
   path: '/content',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminCertificatesRoute = AdminCertificatesRouteImport.update({
+  id: '/certificates',
+  path: '/certificates',
+  getParentRoute: () => AdminRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -178,13 +202,17 @@ export interface FileRoutesByFullPath {
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
+  '/results': typeof ResultsRoute
+  '/verify': typeof VerifyRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/gallery': typeof AdminGalleryRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
   '/admin/projects': typeof AdminProjectsRoute
+  '/admin/results': typeof AdminResultsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/subscribers': typeof AdminSubscribersRoute
   '/admin/team': typeof AdminTeamRoute
@@ -205,13 +233,17 @@ export interface FileRoutesByTo {
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
+  '/results': typeof ResultsRoute
+  '/verify': typeof VerifyRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/gallery': typeof AdminGalleryRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
   '/admin/projects': typeof AdminProjectsRoute
+  '/admin/results': typeof AdminResultsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/subscribers': typeof AdminSubscribersRoute
   '/admin/team': typeof AdminTeamRoute
@@ -234,13 +266,17 @@ export interface FileRoutesById {
   '/impact': typeof ImpactRoute
   '/news': typeof NewsRouteWithChildren
   '/projects': typeof ProjectsRouteWithChildren
+  '/results': typeof ResultsRoute
+  '/verify': typeof VerifyRoute
   '/volunteer': typeof VolunteerRoute
+  '/admin/certificates': typeof AdminCertificatesRoute
   '/admin/content': typeof AdminContentRoute
   '/admin/donations': typeof AdminDonationsRoute
   '/admin/gallery': typeof AdminGalleryRoute
   '/admin/messages': typeof AdminMessagesRoute
   '/admin/news': typeof AdminNewsRoute
   '/admin/projects': typeof AdminProjectsRoute
+  '/admin/results': typeof AdminResultsRoute
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/subscribers': typeof AdminSubscribersRoute
   '/admin/team': typeof AdminTeamRoute
@@ -264,13 +300,17 @@ export interface FileRouteTypes {
     | '/impact'
     | '/news'
     | '/projects'
+    | '/results'
+    | '/verify'
     | '/volunteer'
+    | '/admin/certificates'
     | '/admin/content'
     | '/admin/donations'
     | '/admin/gallery'
     | '/admin/messages'
     | '/admin/news'
     | '/admin/projects'
+    | '/admin/results'
     | '/admin/settings'
     | '/admin/subscribers'
     | '/admin/team'
@@ -291,13 +331,17 @@ export interface FileRouteTypes {
     | '/impact'
     | '/news'
     | '/projects'
+    | '/results'
+    | '/verify'
     | '/volunteer'
+    | '/admin/certificates'
     | '/admin/content'
     | '/admin/donations'
     | '/admin/gallery'
     | '/admin/messages'
     | '/admin/news'
     | '/admin/projects'
+    | '/admin/results'
     | '/admin/settings'
     | '/admin/subscribers'
     | '/admin/team'
@@ -319,13 +363,17 @@ export interface FileRouteTypes {
     | '/impact'
     | '/news'
     | '/projects'
+    | '/results'
+    | '/verify'
     | '/volunteer'
+    | '/admin/certificates'
     | '/admin/content'
     | '/admin/donations'
     | '/admin/gallery'
     | '/admin/messages'
     | '/admin/news'
     | '/admin/projects'
+    | '/admin/results'
     | '/admin/settings'
     | '/admin/subscribers'
     | '/admin/team'
@@ -348,6 +396,8 @@ export interface RootRouteChildren {
   ImpactRoute: typeof ImpactRoute
   NewsRoute: typeof NewsRouteWithChildren
   ProjectsRoute: typeof ProjectsRouteWithChildren
+  ResultsRoute: typeof ResultsRoute
+  VerifyRoute: typeof VerifyRoute
   VolunteerRoute: typeof VolunteerRoute
 }
 
@@ -358,6 +408,20 @@ declare module '@tanstack/react-router' {
       path: '/volunteer'
       fullPath: '/volunteer'
       preLoaderRoute: typeof VolunteerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify': {
+      id: '/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof VerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/results': {
+      id: '/results'
+      path: '/results'
+      fullPath: '/results'
+      preLoaderRoute: typeof ResultsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -493,6 +557,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSettingsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/results': {
+      id: '/admin/results'
+      path: '/results'
+      fullPath: '/admin/results'
+      preLoaderRoute: typeof AdminResultsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/projects': {
       id: '/admin/projects'
       path: '/projects'
@@ -535,16 +606,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminContentRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/certificates': {
+      id: '/admin/certificates'
+      path: '/certificates'
+      fullPath: '/admin/certificates'
+      preLoaderRoute: typeof AdminCertificatesRouteImport
+      parentRoute: typeof AdminRoute
+    }
   }
 }
 
 interface AdminRouteChildren {
+  AdminCertificatesRoute: typeof AdminCertificatesRoute
   AdminContentRoute: typeof AdminContentRoute
   AdminDonationsRoute: typeof AdminDonationsRoute
   AdminGalleryRoute: typeof AdminGalleryRoute
   AdminMessagesRoute: typeof AdminMessagesRoute
   AdminNewsRoute: typeof AdminNewsRoute
   AdminProjectsRoute: typeof AdminProjectsRoute
+  AdminResultsRoute: typeof AdminResultsRoute
   AdminSettingsRoute: typeof AdminSettingsRoute
   AdminSubscribersRoute: typeof AdminSubscribersRoute
   AdminTeamRoute: typeof AdminTeamRoute
@@ -555,12 +635,14 @@ interface AdminRouteChildren {
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
+  AdminCertificatesRoute: AdminCertificatesRoute,
   AdminContentRoute: AdminContentRoute,
   AdminDonationsRoute: AdminDonationsRoute,
   AdminGalleryRoute: AdminGalleryRoute,
   AdminMessagesRoute: AdminMessagesRoute,
   AdminNewsRoute: AdminNewsRoute,
   AdminProjectsRoute: AdminProjectsRoute,
+  AdminResultsRoute: AdminResultsRoute,
   AdminSettingsRoute: AdminSettingsRoute,
   AdminSubscribersRoute: AdminSubscribersRoute,
   AdminTeamRoute: AdminTeamRoute,
@@ -605,18 +687,10 @@ const rootRouteChildren: RootRouteChildren = {
   ImpactRoute: ImpactRoute,
   NewsRoute: NewsRouteWithChildren,
   ProjectsRoute: ProjectsRouteWithChildren,
+  ResultsRoute: ResultsRoute,
+  VerifyRoute: VerifyRoute,
   VolunteerRoute: VolunteerRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
