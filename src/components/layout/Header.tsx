@@ -58,7 +58,7 @@ export function Header() {
           <Link to="/donate" className="hidden md:inline-flex btn-hero text-sm">
             <Heart className="h-4 w-4" /> {t("nav.donate", "Donate Now")}
           </Link>
-          <button className="lg:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
+          <button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X /> : <Menu />}
           </button>
         </div>
