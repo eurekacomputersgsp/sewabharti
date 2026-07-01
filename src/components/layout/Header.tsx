@@ -65,7 +65,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="lg:hidden border-t bg-background">
+        <div className="md:hidden border-t bg-background">
           <div className="container-page py-3 flex flex-col gap-1">
             {navLinks.map((l) => {
               const tkey = `nav.${l.path === "/" ? "home" : l.path.slice(1)}`;
