@@ -1,0 +1,1 @@
+UPDATE public.site_settings SET ngo_name = 'Sewa Bharti ';
