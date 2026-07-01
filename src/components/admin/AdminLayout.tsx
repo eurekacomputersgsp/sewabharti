@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import {
   LayoutDashboard, FolderKanban, HandHeart, Users, Image as ImageIcon, Newspaper,
   UserCog, MessageSquareQuote, FileText, Mail, MailPlus, Settings, Languages, LogOut, Eye,
+  Award, FileCheck,
 } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
@@ -15,6 +16,8 @@ const NAV = [
   { to: "/admin/volunteers", label: "Volunteers", icon: Users },
   { to: "/admin/gallery", label: "Gallery", icon: ImageIcon },
   { to: "/admin/news", label: "News & Events", icon: Newspaper },
+  { to: "/admin/results", label: "Results", icon: FileCheck },
+  { to: "/admin/certificates", label: "Certificates", icon: Award },
   { to: "/admin/team", label: "Team", icon: UserCog },
   { to: "/admin/testimonials", label: "Testimonials", icon: MessageSquareQuote },
   { to: "/admin/content", label: "Site Content", icon: FileText },
