@@ -14,6 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      certificates: {
+        Row: {
+          course_name: string
+          created_at: string
+          ending_date: string | null
+          grade: string | null
+          id: string
+          name: string
+          registration_number: string
+          serial_number: string
+          son_of: string
+          starting_date: string | null
+          updated_at: string
+        }
+        Insert: {
+          course_name: string
+          created_at?: string
+          ending_date?: string | null
+          grade?: string | null
+          id?: string
+          name: string
+          registration_number: string
+          serial_number: string
+          son_of: string
+          starting_date?: string | null
+          updated_at?: string
+        }
+        Update: {
+          course_name?: string
+          created_at?: string
+          ending_date?: string | null
+          grade?: string | null
+          id?: string
+          name?: string
+          registration_number?: string
+          serial_number?: string
+          son_of?: string
+          starting_date?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
       contact_messages: {
         Row: {
           created_at: string
@@ -249,6 +291,45 @@ export type Database = {
           short_description?: string | null
           slug?: string
           status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      results: {
+        Row: {
+          created_at: string
+          description: string | null
+          file_type: string
+          file_url: string
+          id: string
+          is_published: boolean
+          published_date: string | null
+          sort_order: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          file_type: string
+          file_url: string
+          id?: string
+          is_published?: boolean
+          published_date?: string | null
+          sort_order?: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          file_type?: string
+          file_url?: string
+          id?: string
+          is_published?: boolean
+          published_date?: string | null
+          sort_order?: number
           title?: string
           updated_at?: string
         }
